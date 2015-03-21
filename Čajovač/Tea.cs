@@ -34,6 +34,8 @@ namespace Čajovač
             labelM = new System.Windows.Forms.Label();
             labelMin = new System.Windows.Forms.Label();
             labelSec = new System.Windows.Forms.Label();
+            this.groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFuck)).BeginInit();
             //
             // imageButton
             //
@@ -51,25 +53,35 @@ namespace Čajovač
             //             
             groupBox.Location = new System.Drawing.Point(12, 12);
             groupBox.Size = new System.Drawing.Size(256, 256);
+            groupBox.Name = "groupBox";
+            groupBox.TabIndex = 1;
+            groupBox.TabStop = false;
             dad.Controls.Add(groupBox);
+            groupBox.Controls.Add(pictureBoxFuck);
+            groupBox.Controls.Add(buttonWater);
+            groupBox.Controls.Add(buttonReset);
+            groupBox.Controls.Add(labelM);
+            groupBox.Controls.Add(labelMin);
+            groupBox.Controls.Add(labelSec);
+            groupBox.Controls.Add(button);
             // 
             // button
             //
-            groupBox.Controls.Add(button);
             button.BackgroundImage = imageButton;
             button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             button.Location = new System.Drawing.Point(0, 0);
+            button.Name = "button";
             button.Size = new System.Drawing.Size(256, 256);
-            button.TabIndex = 0;
+            button.TabIndex = 1;
             button.UseVisualStyleBackColor = true;
             button.Click += new System.EventHandler(dad.button_Click);
             // 
             // pictureBoxFuck
             // 
-            groupBox.Controls.Add(pictureBoxFuck);
-            pictureBoxFuck.BackgroundImage = imageButton.Clone(new System.Drawing.Rectangle(78, 161, 116, 52), imageButton.PixelFormat);
+            pictureBoxFuck.BackgroundImage = imageButton.Clone(new System.Drawing.Rectangle(79, 159, 116, 52), imageButton.PixelFormat);
             pictureBoxFuck.Location = new System.Drawing.Point(79, 159);
+            pictureBoxFuck.Name = "pictureBoxFuck";
             pictureBoxFuck.Size = new System.Drawing.Size(116, 52);
             pictureBoxFuck.TabIndex = 5;
             pictureBoxFuck.TabStop = false;
@@ -77,13 +89,14 @@ namespace Čajovač
             // 
             // buttonWater
             // 
-            groupBox.Controls.Add(buttonWater);
+            buttonWater.BackColor = System.Drawing.Color.Brown;
             buttonWater.BackgroundImage = global::Čajovač.Properties.Resources.water;
             buttonWater.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             buttonWater.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             buttonWater.FlatAppearance.BorderSize = 0;
             buttonWater.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             buttonWater.Location = new System.Drawing.Point(7, 222);
+            buttonWater.Name = "buttonWater";
             buttonWater.Size = new System.Drawing.Size(27, 27);
             buttonWater.TabIndex = 7;
             buttonWater.UseVisualStyleBackColor = false;
@@ -91,7 +104,6 @@ namespace Čajovač
             // 
             // buttonReset
             // 
-            groupBox.Controls.Add(buttonReset);
             buttonReset.BackColor = System.Drawing.Color.Brown;
             buttonReset.BackgroundImage = global::Čajovač.Properties.Resources.reset;
             buttonReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -106,7 +118,6 @@ namespace Čajovač
             // 
             // labelM
             // 
-            groupBox.Controls.Add(labelM);
             labelM.BackColor = System.Drawing.Color.White;
             labelM.FlatStyle = System.Windows.Forms.FlatStyle.System;
             labelM.Font = new System.Drawing.Font("Microsoft YaHei", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -119,7 +130,6 @@ namespace Čajovač
             // 
             // labelMin
             // 
-            groupBox.Controls.Add(labelMin);
             labelMin.BackColor = System.Drawing.Color.White;
             labelMin.FlatStyle = System.Windows.Forms.FlatStyle.System;
             labelMin.Font = new System.Drawing.Font("Zenzai Itacha", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -127,12 +137,11 @@ namespace Čajovač
             labelMin.Name = "labelVRMin";
             labelMin.Size = new System.Drawing.Size(60, 56);
             labelMin.TabIndex = 2;
-            labelMin.Text = goal.ToString();
+            labelMin.Text = (goal/60).ToString();
             labelMin.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelSec
             // 
-            groupBox.Controls.Add(labelSec);
             labelSec.BackColor = System.Drawing.Color.White;
             labelSec.FlatStyle = System.Windows.Forms.FlatStyle.System;
             labelSec.Font = new System.Drawing.Font("Zenzai Itacha", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,7 +149,7 @@ namespace Čajovač
             labelSec.Margin = new System.Windows.Forms.Padding(0);
             labelSec.Size = new System.Drawing.Size(46, 56);
             labelSec.TabIndex = 3;
-            labelSec.Text = dad.twoDigits(goal);
+            labelSec.Text = dad.twoDigits(goal%60);
             labelSec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             //
             //
@@ -149,5 +158,11 @@ namespace Čajovač
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFuck)).EndInit();
         }       
     }
-    
+    class TeaData
+    {
+        public string name;
+        public int goal;
+        public int goalWater;
+        
+    }
 }
