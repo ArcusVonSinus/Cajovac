@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tea.cs" />
     <Compile Include="Windows7ProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -91,7 +92,6 @@
     <None Include="Resources\DrSFuck.jpg" />
     <None Include="Resources\DrS.jpg" />
     <Content Include="Resources\Gen.jpg" />
-    <None Include="Resources\Gen1.jpg" />
     <None Include="Resources\Oolong.jpg" />
     <None Include="Resources\Oolong fuck.jpg" />
     <None Include="Resources\texture.jpg" />

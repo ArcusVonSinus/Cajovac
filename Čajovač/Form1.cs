@@ -12,6 +12,7 @@ using System.Media;
 
 namespace Čajovač
 {
+    //TTEESSTT
     public partial class Form1 : Form
     {
         //Times of teas
@@ -87,6 +88,8 @@ namespace Čajovač
         public Form1()
         {
             InitializeComponent();
+            Tea Oolong = new Tea(this,"Oolong");
+
             this.contextMenu1 = new System.Windows.Forms.ContextMenu();
 
             this.menuItemOolong = new System.Windows.Forms.MenuItem();
@@ -168,7 +171,22 @@ namespace Čajovač
            
         }
 
-        
+        public void button_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void buttonWater_Click(object sender, EventArgs e)
+        {
+            gong();
+        }
+        public void buttonReset_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
         bool PBRunning;
         bool PBPaused;
         void changeProgressBar(double PBGoal,double PBLeft)
@@ -192,7 +210,7 @@ namespace Čajovač
             windows7ProgressBar.Value =(int) (100*((PBGoal-PBLeft)/PBGoal));
         }
 
-        private void ButtonOolong_Click(object sender, EventArgs e)
+        public void ButtonOolong_Click(object sender, EventArgs e)
         {
             if(oolongTimingWater)
             {
@@ -725,7 +743,7 @@ namespace Čajovač
             catch { }
 
         }
-        private string twoDigits(int n)
+        public string twoDigits(int n)
         {
             if(n<10)
                 return "0" + n.ToString();

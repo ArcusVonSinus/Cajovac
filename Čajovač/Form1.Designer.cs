@@ -109,7 +109,7 @@
             this.groupBox1.Controls.Add(this.labelOolongMin);
             this.groupBox1.Controls.Add(this.labelOolongSec);
             this.groupBox1.Controls.Add(this.buttonOolong);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(254, 88);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(256, 256);
             this.groupBox1.TabIndex = 1;
@@ -196,7 +196,7 @@
             // 
             // buttonOolong
             // 
-            this.buttonOolong.BackgroundImage = global::Čajovač.Properties.Resources.Oolong;
+            this.buttonOolong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonOolong.BackgroundImage")));
             this.buttonOolong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonOolong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOolong.Location = new System.Drawing.Point(0, 0);
@@ -789,12 +789,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Čajovač.Properties.Resources.texture;
             this.ClientSize = new System.Drawing.Size(818, 548);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(826, 578);
             this.MinimumSize = new System.Drawing.Size(826, 578);
