@@ -163,7 +163,10 @@ namespace Čajovač
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             notifyIcon.ContextMenu = this.contextMenu1;
-            gongSound = new SoundPlayer(@"gong.wav");    
+            gongSound = new SoundPlayer(@"gong.wav");
+
+            wyDay.Controls.Windows7ProgressBar windows7ProgressBar = new wyDay.Controls.Windows7ProgressBar();
+            windows7ProgressBar.Value = 50;
         }
         
         private void ButtonOolong_Click(object sender, EventArgs e)
