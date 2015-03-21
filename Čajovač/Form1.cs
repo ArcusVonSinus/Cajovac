@@ -12,7 +12,6 @@ using System.Media;
 
 namespace Čajovač
 {
-    //TEST
     public partial class Form1 : Form
     {
         //Times of teas
@@ -84,7 +83,7 @@ namespace Čajovač
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         SoundPlayer gongSound;
         private System.Windows.Forms.ContextMenu contextMenu1;
-        private System.Windows.Forms.MenuItem menuItemExit;
+        private System.Windows.Forms.MenuItem menuItemExit;       
         public Form1()
         {
             InitializeComponent();
@@ -166,10 +165,33 @@ namespace Čajovač
             notifyIcon.ContextMenu = this.contextMenu1;
             gongSound = new SoundPlayer(@"gong.wav");
 
-            wyDay.Controls.Windows7ProgressBar windows7ProgressBar = new wyDay.Controls.Windows7ProgressBar();
-            windows7ProgressBar.Value = 50;
+           
         }
+
         
+        bool PBRunning;
+        bool PBPaused;
+        void changeProgressBar(double PBGoal,double PBLeft)
+        {
+            if(PBRunning)
+            {
+                windows7ProgressBar.State = wyDay.Controls.ProgressBarState.Normal;
+                windows7ProgressBar.ShowInTaskbar = true;
+            }
+            else if (PBPaused)
+            {
+                windows7ProgressBar.State = wyDay.Controls.ProgressBarState.Pause;
+                windows7ProgressBar.ShowInTaskbar = true;
+            }
+            else
+            {
+                windows7ProgressBar.ShowInTaskbar = false;
+            }
+            if (PBGoal == 0)
+                PBGoal = 1;
+            windows7ProgressBar.Value =(int) (100*((PBGoal-PBLeft)/PBGoal));
+        }
+
         private void ButtonOolong_Click(object sender, EventArgs e)
         {
             if(oolongTimingWater)
@@ -239,7 +261,8 @@ namespace Čajovač
             {
                 goal = new TimeSpan(0, 0, goalOolong);
             }
-            TimeSpan remainingTime = goal - timeSinceStartTime;
+            TimeSpan remainingTime = goal - timeSinceStartTime; PBRunning=true; 
+            changeProgressBar(goal.TotalSeconds,remainingTime.TotalSeconds);
             if (remainingTime.TotalSeconds > 0)
             {
                 labelOolongMin.Text = remainingTime.Minutes.ToString();
@@ -326,7 +349,8 @@ namespace Čajovač
             {
                 goal = new TimeSpan(0, 0, goalGen);
             }
-            TimeSpan remainingTime = goal - timeSinceStartTime;
+            TimeSpan remainingTime = goal - timeSinceStartTime; PBRunning=true; 
+            changeProgressBar(goal.TotalSeconds,remainingTime.TotalSeconds);
             if (remainingTime.TotalSeconds > 0)
             {
                 labelGenMin.Text = remainingTime.Minutes.ToString();
@@ -413,7 +437,7 @@ namespace Čajovač
             {
                 goal = new TimeSpan(0, 0, goalRooibos);
             }
-            TimeSpan remainingTime = goal - timeSinceStartTime;
+            TimeSpan remainingTime = goal - timeSinceStartTime; PBRunning=true; changeProgressBar(goal.TotalSeconds,remainingTime.TotalSeconds);
             if (remainingTime.TotalSeconds > 0)
             {
                 labelRooibosMin.Text = remainingTime.Minutes.ToString();
@@ -500,7 +524,7 @@ namespace Čajovač
             {
                 goal = new TimeSpan(0, 0, goalVR);
             }
-            TimeSpan remainingTime = goal - timeSinceStartTime;
+            TimeSpan remainingTime = goal - timeSinceStartTime; PBRunning=true; changeProgressBar(goal.TotalSeconds,remainingTime.TotalSeconds);
             if (remainingTime.TotalSeconds > 0)
             {
                 labelVRMin.Text = remainingTime.Minutes.ToString();
@@ -587,7 +611,7 @@ namespace Čajovač
             {
                 goal = new TimeSpan(0, 0, goalDS);
             }
-            TimeSpan remainingTime = goal - timeSinceStartTime;
+            TimeSpan remainingTime = goal - timeSinceStartTime; PBRunning=true; changeProgressBar(goal.TotalSeconds,remainingTime.TotalSeconds);
             if (remainingTime.TotalSeconds > 0)
             {
                 labelDSMin.Text = remainingTime.Minutes.ToString();
@@ -674,7 +698,7 @@ namespace Čajovač
             {
                 goal = new TimeSpan(0, 0, goalMate);
             }
-            TimeSpan remainingTime = goal - timeSinceStartTime;
+            TimeSpan remainingTime = goal - timeSinceStartTime; PBRunning=true; changeProgressBar(goal.TotalSeconds,remainingTime.TotalSeconds);
             if (remainingTime.TotalSeconds > 0)
             {
                 labelMateMin.Text = remainingTime.Minutes.ToString();
@@ -729,6 +753,11 @@ namespace Čajovač
         private void quitMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
         }
 
 

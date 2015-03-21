@@ -85,6 +85,7 @@
             this.timerVR = new System.Windows.Forms.Timer(this.components);
             this.timerDS = new System.Windows.Forms.Timer(this.components);
             this.timerMate = new System.Windows.Forms.Timer(this.components);
+            this.windows7ProgressBar = new wyDay.Controls.Windows7ProgressBar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -551,6 +552,7 @@
             this.groupBox5.Controls.Add(this.pictureBox5);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.labelDSMin);
+            this.groupBox5.Controls.Add(this.windows7ProgressBar);
             this.groupBox5.Controls.Add(this.labelDSSec);
             this.groupBox5.Controls.Add(this.buttonDS);
             this.groupBox5.Location = new System.Drawing.Point(280, 280);
@@ -771,6 +773,16 @@
             this.timerMate.Interval = 200;
             this.timerMate.Tick += new System.EventHandler(this.timerMate_Tick);
             // 
+            // windows7ProgressBar
+            // 
+            this.windows7ProgressBar.ContainerControl = this;
+            this.windows7ProgressBar.Location = new System.Drawing.Point(-57, 222);
+            this.windows7ProgressBar.MarqueeAnimationSpeed = 50;
+            this.windows7ProgressBar.Name = "windows7ProgressBar";
+            this.windows7ProgressBar.Size = new System.Drawing.Size(274, 34);
+            this.windows7ProgressBar.TabIndex = 0;
+            this.windows7ProgressBar.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -807,6 +819,7 @@
 
         #endregion
 
+        private wyDay.Controls.Windows7ProgressBar windows7ProgressBar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Timer timerOolong;
         private System.Windows.Forms.Label label1;
