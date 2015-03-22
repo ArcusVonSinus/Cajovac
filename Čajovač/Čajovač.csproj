@@ -56,6 +56,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tea.cs" />
     <Compile Include="Windows7ProgressBar.cs">
       <SubType>Component</SubType>
@@ -67,17 +72,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -88,22 +88,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Gen fuck.jpg" />
-    <None Include="Resources\DrSFuck.jpg" />
-    <None Include="Resources\DrS.jpg" />
-    <Content Include="Resources\Gen.jpg" />
-    <None Include="Resources\Oolong.jpg" />
-    <None Include="Resources\Oolong fuck.jpg" />
-    <None Include="Resources\texture.jpg" />
-    <None Include="Resources\reset.png" />
-    <None Include="Resources\water.png" />
     <None Include="Resources\Rooibos.jpg" />
-    <None Include="Resources\RooibosFuck.jpg" />
-    <None Include="Resources\VR.jpg" />
-    <None Include="Resources\Mate.jpg" />
-    <None Include="Resources\MateFuck.jpg" />
-    <None Include="Resources\VRFuck.jpg" />
-    <None Include="Resources\teapot.ico" />
+    <None Include="Resources\noImage.jpg" />
+    <Content Include="Resources\reset.png" />
+    <Content Include="Resources\teapot.ico" />
+    <Content Include="Resources\texture.jpg" />
+    <Content Include="Resources\water.png" />
     <Content Include="teapot.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

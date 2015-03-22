@@ -127,43 +127,10 @@
   <data name="water" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\water.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Oolong" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Oolong.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RooibosFuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RooibosFuck.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OolongFuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Oolong fuck.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rooibos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rooibos.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GenFuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gen fuck.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="VR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VR.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DrS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DrS.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DrSFuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DrSFuck.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mate.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MateFuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MateFuck.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="teapot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\teapot.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VRFuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VRFuck.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="noImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noImage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
