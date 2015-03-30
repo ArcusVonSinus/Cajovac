@@ -54,6 +54,8 @@
             // 
             // textBoxGoal
             // 
+            this.textBoxGoal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxGoal.Location = new System.Drawing.Point(290, 38);
             this.textBoxGoal.Name = "textBoxGoal";
             this.textBoxGoal.Size = new System.Drawing.Size(144, 20);
@@ -61,6 +63,8 @@
             // 
             // textBoxGoalWater
             // 
+            this.textBoxGoalWater.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxGoalWater.Location = new System.Drawing.Point(290, 64);
             this.textBoxGoalWater.Name = "textBoxGoalWater";
             this.textBoxGoalWater.Size = new System.Drawing.Size(144, 20);
@@ -68,6 +72,8 @@
             // 
             // textBoxPozn
             // 
+            this.textBoxPozn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPozn.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.textBoxPozn.Location = new System.Drawing.Point(290, 116);
             this.textBoxPozn.Name = "textBoxPozn";
@@ -76,6 +82,7 @@
             // 
             // buttonApply
             // 
+            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonApply.Location = new System.Drawing.Point(367, 142);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(67, 23);
@@ -86,6 +93,8 @@
             // 
             // textBoxName
             // 
+            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxName.Location = new System.Drawing.Point(290, 12);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(144, 20);
@@ -93,6 +102,8 @@
             // 
             // seznam
             // 
+            this.seznam.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.seznam.FormattingEnabled = true;
             this.seznam.Location = new System.Drawing.Point(12, 12);
             this.seznam.Name = "seznam";
@@ -103,6 +114,7 @@
             // 
             // buttonLoad
             // 
+            this.buttonLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLoad.Location = new System.Drawing.Point(359, 335);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(78, 25);
@@ -122,6 +134,8 @@
             // 
             // textBoxImage
             // 
+            this.textBoxImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxImage.Location = new System.Drawing.Point(290, 90);
             this.textBoxImage.Name = "textBoxImage";
             this.textBoxImage.Size = new System.Drawing.Size(144, 20);
@@ -129,6 +143,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSave.Location = new System.Drawing.Point(278, 335);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 25);
@@ -175,6 +190,7 @@
             // 
             // buttonDown
             // 
+            this.buttonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonDown.Location = new System.Drawing.Point(66, 337);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(48, 23);
@@ -185,6 +201,7 @@
             // 
             // buttonRemove
             // 
+            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonRemove.Location = new System.Drawing.Point(120, 337);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(98, 23);
@@ -195,6 +212,7 @@
             // 
             // buttonUp
             // 
+            this.buttonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonUp.Location = new System.Drawing.Point(12, 337);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(48, 23);
@@ -205,6 +223,7 @@
             // 
             // buttonAdd
             // 
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonAdd.Location = new System.Drawing.Point(290, 142);
             this.buttonAdd.Name = "buttonAdd";
@@ -216,6 +235,7 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Location = new System.Drawing.Point(394, 311);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
@@ -240,6 +260,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(275, 313);
             this.label6.Name = "label6";
@@ -273,6 +294,7 @@
             this.Controls.Add(this.textBoxGoalWater);
             this.Controls.Add(this.textBoxGoal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(403, 263);
             this.Name = "Form1";
             this.Text = "Správa čajů";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

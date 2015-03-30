@@ -76,6 +76,7 @@ namespace Nový_Čaj
                 }
                 seznam.Items.Add(str, teaData.data[i].enabled);
             }
+            numericUpDown1.Value = teaData.cajuNaSirku;
         }
         private void seznam_SelectedIndexChanged(object sender, EventArgs e)
         {
