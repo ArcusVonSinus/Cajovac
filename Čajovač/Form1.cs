@@ -75,38 +75,25 @@ namespace Čajovač
         void loadTeas()
         {
             TeaData teaData = new TeaData();
-            /* teaData.data = new List<TeaDataItem>();
-             teaData.data.Add(new TeaDataItem("test", 150, 223, "1.jpg"));
-             teaData.data.Add(new TeaDataItem("test", 150, 223, "1.jpg"));
-             teaData.data.Add(new TeaDataItem("test", 150, 223, "1.jpg"));
-             teaData.data.Add(new TeaDataItem("test", 150, 223, "ds1.jpg"));
-
-             teaData.data.Add(new TeaDataItem("test", 150, 223, "1.jpg"));
-             teaData.data.Add(new TeaDataItem("test", 150, 223, "1.jpg"));
-             teaData.data.Add(new TeaDataItem("test", 150, 223, "1.jpg"));
-             teaData.data.Add(new TeaDataItem("test", 150, 223, "aasfe.aef"));
-
-             //TextWriter tw = new StringWriter();
-             TextWriter tw = new StreamWriter("save.xml");
-             System.Xml.Serialization.XmlSerializer xml = new System.Xml.Serialization.XmlSerializer(typeof(Čajovač.TeaData));   
-             xml.Serialize(tw, teaData);
- //            System.IO.Directory.CreateDirectory("Save");
-             //File.WriteAllText(tw);
-             //File.WriteAllBytes(@"Results\sv.xml", );
-             tw.Close();
-             */
             string teasXML;
             try
             {
-                teasXML = File.ReadAllText("teas.xml");
+                teasXML = File.ReadAllText("teas.tea");
             }
             catch(System.IO.FileNotFoundException)
             {
-                MessageBox.Show("Missing file \"teas.xml\"");
-                quitMenuItem_Click(null,null);
-                System.Windows.Forms.Application.Exit();
-                teas = new Tea[0];
-                return;
+                try
+                {
+                    teasXML = File.ReadAllText("teas.xml");
+                }
+                catch (System.IO.FileNotFoundException)
+                {
+                    MessageBox.Show("Missing file \"teas.tea\"");
+                    quitMenuItem_Click(null, null);
+                    System.Windows.Forms.Application.Exit();
+                    teas = new Tea[0];
+                    return;
+                }
             }
             System.Xml.Serialization.XmlSerializer xml = new System.Xml.Serialization.XmlSerializer(typeof(Čajovač.TeaData));
             var dsr = new StringReader(teasXML);
@@ -122,11 +109,14 @@ namespace Čajovač
                 teas = new Tea[0];
                 return;
             }
+            cajuNaSirku = teaData.cajuNaSirku;
             teas = new Tea[teaData.data.Count];           
             for(int i = 0;i<teaData.data.Count;i++)
             {
                 teas[i]= new Tea(this,teaData.data[i],i);
             }
+            
+
         }
 
 
@@ -158,7 +148,10 @@ namespace Čajovač
                 tea.timer.Stop();
                 var timeSinceStartTimeTemp = DateTime.Now - tea.timeStart;                                                        
                 TimeSpan timeSinceStartTime = new TimeSpan(timeSinceStartTimeTemp.Hours, timeSinceStartTimeTemp.Minutes, timeSinceStartTimeTemp.Seconds + tea.elapsed);
-                tea.elapsed = (int)(timeSinceStartTime.TotalSeconds);                
+                tea.elapsed = (int)(timeSinceStartTime.TotalSeconds);
+                PBRunning = false;
+                PBPaused = true;
+                changeProgressBar(0,0);
             }           
         }
         public void buttonWater_Click(object sender, EventArgs e)
@@ -181,7 +174,7 @@ namespace Čajovač
             {
                 tea.running = true;
                 tea.timeStart = DateTime.Now;
-                tea.timer.Start();
+                tea.timer.Start();                
             }
             else
             {
@@ -190,6 +183,9 @@ namespace Čajovač
                 var timeSinceStartTimeTemp = DateTime.Now - tea.timeStart;
                 TimeSpan timeSinceStartTime = new TimeSpan(timeSinceStartTimeTemp.Hours, timeSinceStartTimeTemp.Minutes, timeSinceStartTimeTemp.Seconds + tea.elapsed);
                 tea.elapsed = (int)(timeSinceStartTime.TotalSeconds);
+                PBRunning = false;
+                PBPaused = true;
+                changeProgressBar(0,0);
             }
         }
         public void buttonReset_Click(object sender, EventArgs e)
@@ -208,6 +204,10 @@ namespace Čajovač
             tea.labelMin.Text = (tea.goal / 60).ToString();
             tea.labelSec.Text = twoDigits(tea.goal % 60);
             tea.elapsed = 0;
+            PBRunning = false;
+            PBPaused = false;
+            changeProgressBar(0, 0);
+
         }
         public void timer_Tick(object sender, EventArgs e)
         {
@@ -227,7 +227,9 @@ namespace Čajovač
             {
                 goal = new TimeSpan(0, 0, tea.goal);
             }
-            TimeSpan remainingTime = goal - timeSinceStartTime; PBRunning=true; 
+            TimeSpan remainingTime = goal - timeSinceStartTime; 
+            PBRunning=true;
+            PBPaused = false;
             changeProgressBar(goal.TotalSeconds,remainingTime.TotalSeconds);
             if (remainingTime.TotalSeconds > 0)
             {
@@ -255,6 +257,8 @@ namespace Čajovač
             {
                 windows7ProgressBar.State = wyDay.Controls.ProgressBarState.Normal;
                 windows7ProgressBar.ShowInTaskbar = true;
+                if(PBGoal!=0)
+                    windows7ProgressBar.Value =(int) (100*((PBGoal-PBLeft)/PBGoal));
             }
             else if (PBPaused)
             {
@@ -267,7 +271,7 @@ namespace Čajovač
             }
             if (PBGoal == 0)
                 PBGoal = 1;
-            windows7ProgressBar.Value =(int) (100*((PBGoal-PBLeft)/PBGoal));
+            
         }
 
        

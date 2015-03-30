@@ -72,11 +72,18 @@ namespace Čajovač
             // imageButton
             //
             Bitmap imageButton;
-            try
+            if (teaData.imageFile != "")
             {
-                imageButton = (Bitmap)Image.FromFile(teaData.imageFile, true);
+                try
+                {
+                    imageButton = (Bitmap)Image.FromFile(teaData.imageFile, true);
+                }
+                catch (System.IO.FileNotFoundException)
+                {
+                    imageButton = global::Čajovač.Properties.Resources.noImage;
+                }
             }
-            catch (System.IO.FileNotFoundException)
+            else
             {
                 imageButton = global::Čajovač.Properties.Resources.noImage;
             }
@@ -194,6 +201,8 @@ namespace Čajovač
             menuItemWater.Text = name + " water";
             menuItem.Click += new System.EventHandler(dad.button_Click);
             menuItemWater.Click += new System.EventHandler(dad.buttonWater_Click);
+            menuItem.Tag = id;
+            menuItemWater.Tag = id;
             // 
             // timerOolong
             // 
@@ -213,6 +222,8 @@ namespace Čajovač
         public int goal;
         public int goalWater;
         public string imageFile;
+        public bool enabled;
+        public string poznamka = "";
         public TeaDataItem()
         {
 
@@ -223,13 +234,46 @@ namespace Čajovač
             this.goal = goal;
             this.goalWater = goalWater;
             this.imageFile = imageFile;
+            enabled = true;
         }
     }
     public class TeaData
     {
+
         public TeaData()
         {
 
+        }
+        public int cajuNaSirku = 3;
+        public int numberOfEnabled
+        {
+            get
+            {
+                int i = 0;
+                foreach(TeaDataItem tdi in data)
+                {
+                    if (tdi.enabled)
+                        i++;
+                }
+                return i;
+            }
+        }
+        public TeaDataItem nthEnabled(int n)
+        {
+            int i = 0;
+            for(int j = 0;j<data.Count;j++)
+            {
+
+                if (data[j].enabled)
+                {
+                    if(i==n)
+                    {
+                        return data[j];
+                    }
+                    i++;
+                }
+            }
+            return null;
         }
         public List<TeaDataItem> data;
     }
