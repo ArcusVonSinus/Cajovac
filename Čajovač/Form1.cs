@@ -110,10 +110,15 @@ namespace Čajovač
                 return;
             }
             cajuNaSirku = teaData.cajuNaSirku;
-            teas = new Tea[teaData.data.Count];           
+            teas = new Tea[teaData.numberOfEnabled];
+            int j = 0;
             for(int i = 0;i<teaData.data.Count;i++)
             {
-                teas[i]= new Tea(this,teaData.data[i],i);
+                if (teaData.data[i].enabled)
+                {
+                    teas[j] = new Tea(this, teaData.data[i], j);
+                    j++;
+                }
             }
             
 
@@ -251,6 +256,14 @@ namespace Čajovač
 
         bool PBRunning;
         bool PBPaused;
+        int nulaAzSto(double n)
+        {
+            if (n >= 100)
+                n = 100;
+            else if (n < 0)
+                n = 0;
+            return (int)(n);
+        }
         void changeProgressBar(double PBGoal,double PBLeft)
         {
             if(PBRunning)
@@ -258,7 +271,7 @@ namespace Čajovač
                 windows7ProgressBar.State = wyDay.Controls.ProgressBarState.Normal;
                 windows7ProgressBar.ShowInTaskbar = true;
                 if(PBGoal!=0)
-                    windows7ProgressBar.Value =(int) (100*((PBGoal-PBLeft)/PBGoal));
+                    windows7ProgressBar.Value =nulaAzSto(100*((PBGoal-PBLeft)/PBGoal));
             }
             else if (PBPaused)
             {
