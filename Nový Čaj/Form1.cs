@@ -137,58 +137,49 @@ namespace Nový_Čaj
                 redraw();
             }
         }
-
+        private int goalToInt(string goal)
+        {
+            int g = 0;
+            string[] gs = goal.Split(':');
+            bool gb = false;
+            if (gs.Length == 1)
+            {
+                gb = Int32.TryParse(gs[0], out g);
+                if (gs[0] == "")
+                {
+                    return 0;
+                }
+                return g;
+            }
+            else if (gs.Length == 2)
+            {
+                int gmin = 0, gsec = 0;
+                gb = Int32.TryParse(gs[0], out gmin) && Int32.TryParse(gs[1], out gsec);
+                if(!gb)
+                {
+                    return -1;
+                }
+                return (60 * gmin + gsec);
+            }
+            return -1;
+        }
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            if (seznam.Items.Count == 1 && teaData.data[0].name == "New")
+           /* if (seznam.Items.Count == 1 && teaData.data[0].name == "New")
                 seznam.SelectedItem = 0;
 
             if ((seznam.Items.Count == 1 && teaData.data[0].name == "New" && textBoxName.Text!="") || seznam.SelectedItem != null)
-            {
-                int g=0;
-                int gw=0;
-                string[] gs = textBoxGoal.Text.Split(':');
-                string[] gws = textBoxGoalWater.Text.Split(':');
-                bool gb = false; ;
-                bool gwb=false;
-                if (gs.Length == 1)
-                {
-                    gb = Int32.TryParse(gs[0], out g);
-                    if(gs[0]=="")
-                    {
-                        gb = true;
-                        g = 0;
-                    }
-                }
-                else if (gs.Length == 2)
-                {
-                    int gmin = 0, gsec = 0;
-                    gb = Int32.TryParse(gs[0], out gmin) && Int32.TryParse(gs[1], out gsec);
-                    g = 60 * gmin + gsec;
-                }
-                if (gws.Length == 1)
-                {
-                    gwb = Int32.TryParse(gws[0], out gw);
-                    if (gws[0] == "")
-                    {
-                        gwb = true;
-                        gw = 0;
-                    }
-                }
-                else if (gws.Length == 2)
-                {
-                    int gmin = 0, gsec = 0;
-                    gwb = Int32.TryParse(gws[0], out gmin) && Int32.TryParse(gws[1], out gsec);
-                    gw = 60 * gmin + gsec;
-                }
-                if(gb&&gwb)
+            {*/
+                int g=goalToInt(textBoxGoal.Text);                
+                int gw= goalToInt(textBoxGoalWater.Text);            
+                if(g>=0 && gw>=0)
                 {
                     int i;
                     if (seznam.SelectedItem == null)
                         i = 0;
                     else
                         i = seznam.SelectedIndex;
-                    teaData.data[i].name = textBoxName.Text;
+                    teaData.data[i].name = textBoxName.Text;                    
                     teaData.data[i].goal = g;
                     teaData.data[i].goalWater = gw;
                     teaData.data[i].imageFile = textBoxImage.Text;
@@ -196,29 +187,39 @@ namespace Nový_Čaj
                     redraw();
                     seznam.SelectedIndex = i;
                 }                 
-            }
+            //}
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            string name;
+            if (textBoxName.Text != "")
+            {
+                name = textBoxName.Text;
+            }
+            else
+            {
+                name = "New";
+            }
+            string poznamka = textBoxPozn.Text;
+            string img = textBoxImage.Text;                  
+            int g = goalToInt(textBoxGoal.Text);
+            int gw = goalToInt(textBoxGoalWater.Text);
+            if (g < 0)
+                g = 0;
+            if (gw < 0)
+                gw = 0;
+
             if(teaData == null)
             {
                 teaData = new Čajovač.TeaData();
                 teaData.data= new List<Čajovač.TeaDataItem>();
-                teaData.data.Add(new Čajovač.TeaDataItem("New", 0, 0, ""));
+                teaData.data.Add(new Čajovač.TeaDataItem(name, g, gw, poznamka, img));                
                 redraw();
-                buttonApply_Click(null, null);
                 return;
             }
-            teaData.data.Add(new Čajovač.TeaDataItem("New", 0, 0, ""));
-            redraw();
-            seznam.SelectedIndex = seznam.Items.Count - 1;
-           
-            int i = seznam.Items.Count - 1;
-            textBoxName.Text = teaData.data[i].name;
-            textBoxGoal.Text = timeFormatter(teaData.data[i].goal);
-            textBoxGoalWater.Text = timeFormatter(teaData.data[i].goalWater);
-            textBoxImage.Text = teaData.data[i].imageFile;
-            textBoxPozn.Text = teaData.data[i].poznamka;
+            teaData.data.Add(new Čajovač.TeaDataItem(name, g, gw, poznamka, img));
+            redraw();                        
+            seznam.SelectedIndex = seznam.Items.Count - 1;           
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

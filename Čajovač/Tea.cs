@@ -234,7 +234,16 @@ namespace Čajovač
         {
 
         }
-        public TeaDataItem(string name,int goal, int goalWater,string imageFile)
+        public TeaDataItem(string name, int goal, int goalWater, string imageFile)
+        {
+            this.name = name;
+            this.goal = goal;
+            this.goalWater = goalWater;
+            this.imageFile = imageFile;
+            this.poznamka = poznamka;
+            enabled = true;
+        }
+        public TeaDataItem(string name,int goal, int goalWater,string poznamka, string imageFile)
         {
             this.name = name;
             this.goal = goal;

@@ -61,6 +61,30 @@ namespace Čajovač.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;TeaData xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///  &lt;cajuNaSirku&gt;3&lt;/cajuNaSirku&gt;
+        ///  &lt;data&gt;
+        ///    &lt;TeaDataItem&gt;
+        ///      &lt;name&gt;Tea 1&lt;/name&gt;
+        ///      &lt;goal&gt;60&lt;/goal&gt;
+        ///      &lt;goalWater&gt;120&lt;/goalWater&gt;
+        ///      &lt;imageFile&gt;1.jpg&lt;/imageFile&gt;
+        ///      &lt;enabled&gt;true&lt;/enabled&gt;
+        ///      &lt;poznamka&gt;Note&lt;/poznamka&gt;
+        ///    &lt;/TeaDataItem&gt;
+        ///    &lt;TeaDataItem&gt;
+        ///      &lt;name&gt;Tea 2&lt;/name&gt;
+        ///      &lt;goal&gt;120&lt;/goal&gt;
+        ///      &lt;goalWater&gt;180&lt;/goalWat [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DefaultTeas {
+            get {
+                return ResourceManager.GetString("DefaultTeas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream gong {
@@ -85,6 +109,16 @@ namespace Čajovač.Properties {
         public static System.Drawing.Bitmap reset {
             get {
                 object obj = ResourceManager.GetObject("reset", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Sample {
+            get {
+                object obj = ResourceManager.GetObject("Sample", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

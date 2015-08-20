@@ -82,11 +82,21 @@ namespace Čajovač
                 }
                 catch (System.IO.FileNotFoundException)
                 {
-                    MessageBox.Show("Missing file \"teas.tea\"");
-                    quitMenuItem_Click(null, null);
-                    System.Windows.Forms.Application.Exit();
-                    teas = new Tea[0];
-                    return;
+                    MessageBox.Show("Missing file \"teas.tea\", sample file created");
+                    File.WriteAllText("teas.tea", Properties.Resources.DefaultTeas);
+                    if(!Directory.Exists("Images"))
+                    {
+                        Directory.CreateDirectory("Images");
+                    }
+                    if (!File.Exists(@"Images\1.jpg"))
+                    {
+                        Properties.Resources.Sample.Save("Images\\1.jpg");
+                    }
+                    if (!File.Exists(@"Images\2.jpg"))
+                    {
+                        Properties.Resources.Sample.Save("Images\\2.jpg");
+                    }
+                    teasXML = Properties.Resources.DefaultTeas;
                 }
             }
             System.Xml.Serialization.XmlSerializer xml = new System.Xml.Serialization.XmlSerializer(typeof(Čajovač.TeaData));
@@ -97,7 +107,7 @@ namespace Čajovač
             }
             catch (System.InvalidOperationException)
             {
-                MessageBox.Show("File \"teas.xml\" corrupted");
+                MessageBox.Show("File \"teas.xml\" corrupted, delete it to create sample file.");
                 quitMenuItem_Click(null, null);
                 System.Windows.Forms.Application.Exit();
                 teas = new Tea[0];

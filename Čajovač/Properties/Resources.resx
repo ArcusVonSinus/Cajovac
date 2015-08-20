@@ -139,4 +139,31 @@
   <data name="ZenzaiItacha" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZenzaiItacha.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="DefaultTeas" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;TeaData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;cajuNaSirku&gt;3&lt;/cajuNaSirku&gt;
+  &lt;data&gt;
+    &lt;TeaDataItem&gt;
+      &lt;name&gt;Tea 1&lt;/name&gt;
+      &lt;goal&gt;60&lt;/goal&gt;
+      &lt;goalWater&gt;120&lt;/goalWater&gt;
+      &lt;imageFile&gt;1.jpg&lt;/imageFile&gt;
+      &lt;enabled&gt;true&lt;/enabled&gt;
+      &lt;poznamka&gt;Note&lt;/poznamka&gt;
+    &lt;/TeaDataItem&gt;
+    &lt;TeaDataItem&gt;
+      &lt;name&gt;Tea 2&lt;/name&gt;
+      &lt;goal&gt;120&lt;/goal&gt;
+      &lt;goalWater&gt;180&lt;/goalWater&gt;
+      &lt;imageFile&gt;2.jpg&lt;/imageFile&gt;
+      &lt;enabled&gt;true&lt;/enabled&gt;
+      &lt;poznamka&gt;Note1&lt;/poznamka&gt;
+    &lt;/TeaDataItem&gt;
+  &lt;/data&gt;
+&lt;/TeaData&gt;</value>
+  </data>
+  <data name="Sample" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sample.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
