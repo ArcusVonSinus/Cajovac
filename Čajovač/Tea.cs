@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing.Text;
 
 namespace Čajovač
 {
@@ -11,6 +12,7 @@ namespace Čajovač
     {                
         Form1 dad;
         TeaDataItem teaData;
+        Font myFont;
         int id;
         public int goal
         {
@@ -54,6 +56,7 @@ namespace Čajovač
             this.dad = dad;
             this.teaData = teaData;
             this.id = id;
+            this.myFont = dad.myFont;
 
             groupBox = new System.Windows.Forms.GroupBox();
             button = new System.Windows.Forms.Button();
@@ -76,7 +79,7 @@ namespace Čajovač
             {
                 try
                 {
-                    imageButton = (Bitmap)Image.FromFile(teaData.imageFile, true);
+                    imageButton = (Bitmap)Image.FromFile(@"Images\" + teaData.imageFile, true);
                 }
                 catch (System.IO.FileNotFoundException)
                 {
@@ -175,7 +178,9 @@ namespace Čajovač
             // 
             labelMin.BackColor = System.Drawing.Color.White;
             labelMin.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            labelMin.Font = new System.Drawing.Font("Zenzai Itacha", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+           
+            labelMin.Font = myFont;
+            //labelMin.Font = new System.Drawing.Font("Zenzai Itacha", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             labelMin.Location = new System.Drawing.Point(131, 192);
             labelMin.Name = "labelVRMin";
             labelMin.Size = new System.Drawing.Size(60, 56);
@@ -185,9 +190,10 @@ namespace Čajovač
             // 
             // labelSec
             // 
+            labelSec.Font = myFont;
             labelSec.BackColor = System.Drawing.Color.White;
             labelSec.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            labelSec.Font = new System.Drawing.Font("Zenzai Itacha", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //labelSec.Font = new System.Drawing.Font("Zenzai Itacha", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             labelSec.Location = new System.Drawing.Point(207, 192);
             labelSec.Margin = new System.Windows.Forms.Padding(0);
             labelSec.Size = new System.Drawing.Size(46, 56);

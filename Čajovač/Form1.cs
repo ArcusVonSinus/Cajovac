@@ -17,29 +17,12 @@ namespace Čajovač
     //TTEESSTT
     public partial class Form1 : Form
     {
-        /*
-         * //Times of teas
-        int goalOolong = 2 * 60;        
-        int goalGen = 1 * 60 + 30;        
-        int goalRooibos = 5 * 60;        
-        int goalVR = 2*60+30;
-        int goalDS = 2*60+30;
-        int goalMate = 4*60;
-        //Water---       
-        int goalWaterOolong = 10 * 60 + 21;
-        int goalWaterGen = 10 * 60 + 21;
-        int goalWaterRooibos = 0;
-        int goalWaterVR = 29*60+8;
-        int goalWaterDS = 29*60+8;
-        int goalWaterMate = 22*60+41;
-        //WaterFromBoil
-        int goalWaterOolong = 6 * 60 + 43;
-        int goalWaterGen = 6 * 60 + 43;
-        int goalWaterRooibos = 0;
-        int goalWaterVR = 25 * 60 + 30;
-        int goalWaterDS = 25 * 60 + 30;
-        int goalWaterMate = 18 * 60 + 41;
-        */
+        //Font
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
+        private PrivateFontCollection fonts = new PrivateFontCollection();    
+        public Font myFont;   
+             
         SoundPlayer gongSound;
         private System.Windows.Forms.ContextMenu contextMenu;
         private System.Windows.Forms.MenuItem menuItemExit;
@@ -48,6 +31,17 @@ namespace Čajovač
         public Form1()
         {
             InitializeComponent();
+
+            //FONT - Zenzai Itacha
+            byte[] fontData = Properties.Resources.ZenzaiItacha;
+            IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+            System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+            uint dummy = 0;
+            fonts.AddMemoryFont(fontPtr, Properties.Resources.ZenzaiItacha.Length);
+            AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.ZenzaiItacha.Length, IntPtr.Zero, ref dummy);
+            System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
+            myFont = new Font(fonts.Families[0], 30.0F);
+
             loadTeas();
 
             this.ClientSize = new System.Drawing.Size(12 + (256+12)*cajuNaSirku, 12 + (256+12)*(((teas.Length-1) / cajuNaSirku)+1));
@@ -69,7 +63,7 @@ namespace Čajovač
             this.menuItemExit.Text = "E&xit";
             this.menuItemExit.Click += new System.EventHandler(quitMenuItem_Click);
             notifyIcon.ContextMenu = this.contextMenu;
-            gongSound = new SoundPlayer(@"gong.wav");           
+            gongSound = new SoundPlayer(Properties.Resources.gong);           
         }
 
         void loadTeas()
@@ -206,6 +200,7 @@ namespace Čajovač
 
             tea.timer.Stop();
             tea.running = false;
+            tea.timingWater = false;      
             tea.labelMin.Text = (tea.goal / 60).ToString();
             tea.labelSec.Text = twoDigits(tea.goal % 60);
             tea.elapsed = 0;
@@ -326,10 +321,5 @@ namespace Čajovač
         {
             System.Windows.Forms.Application.Exit();
         }
-
-        
-
-
-
     }
 }

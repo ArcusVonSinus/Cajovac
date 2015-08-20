@@ -70,7 +70,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -83,15 +83,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\ZenzaiItacha.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Rooibos.jpg" />
     <None Include="Resources\noImage.jpg" />
+    <None Include="bin\Debug\gong.wav" />
     <Content Include="Resources\reset.png" />
-    <Content Include="Resources\teapot.ico" />
+    <None Include="Resources\teapot.ico" />
     <Content Include="Resources\texture.jpg" />
     <Content Include="Resources\water.png" />
     <Content Include="teapot.ico" />
