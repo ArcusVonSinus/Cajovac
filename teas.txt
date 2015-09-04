@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TeaData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <cajuNaSirku>3</cajuNaSirku>
+  <data>
+    <TeaDataItem>
+      <name>Tea 1</name>
+      <goal>60</goal>
+      <goalWater>120</goalWater>
+      <imageFile>1.jpg</imageFile>
+      <enabled>true</enabled>
+      <poznamka>Note</poznamka>
+    </TeaDataItem>
+    <TeaDataItem>
+      <name>Tea 2</name>
+      <goal>120</goal>
+      <goalWater>180</goalWater>
+      <imageFile>2.jpg</imageFile>
+      <enabled>true</enabled>
+      <poznamka>Note1</poznamka>
+    </TeaDataItem>
+  </data>
+</TeaData>

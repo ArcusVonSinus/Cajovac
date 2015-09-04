@@ -94,7 +94,7 @@
     <Content Include="Resources\reset.png" />
     <None Include="Resources\teapot.ico" />
     <None Include="Resources\Sample.jpg" />
-    <Content Include="Resources\texture.jpg" />
+    <None Include="Resources\texture.jpg" />
     <Content Include="Resources\water.png" />
     <Content Include="teapot.ico" />
   </ItemGroup>

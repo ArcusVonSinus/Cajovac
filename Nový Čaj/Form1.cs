@@ -219,7 +219,15 @@ namespace Nový_Čaj
             }
             teaData.data.Add(new Čajovač.TeaDataItem(name, g, gw, poznamka, img));
             redraw();                        
-            seznam.SelectedIndex = seznam.Items.Count - 1;           
+            seznam.SelectedIndex = seznam.Items.Count - 1;
+           
+            /*
+            int i = seznam.Items.Count - 1;
+            textBoxName.Text = teaData.data[i].name;
+            textBoxGoal.Text = timeFormatter(teaData.data[i].goal);
+            textBoxGoalWater.Text = timeFormatter(teaData.data[i].goalWater);
+            textBoxImage.Text = teaData.data[i].imageFile;
+            textBoxPozn.Text = teaData.data[i].poznamka;*/
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

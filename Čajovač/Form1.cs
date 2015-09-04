@@ -26,7 +26,7 @@ namespace Čajovač
         SoundPlayer gongSound;
         private System.Windows.Forms.ContextMenu contextMenu;
         private System.Windows.Forms.MenuItem menuItemExit;
-        private Tea[] teas;
+        public Tea[] teas;
         public int cajuNaSirku = 3;
         public Form1()
         {
@@ -41,12 +41,15 @@ namespace Čajovač
             AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.ZenzaiItacha.Length, IntPtr.Zero, ref dummy);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
             myFont = new Font(fonts.Families[0], 30.0F);
+            //this.ClientSize = new System.Drawing.Size(1,1);
 
             loadTeas();
 
-            this.ClientSize = new System.Drawing.Size(12 + (256+12)*cajuNaSirku, 12 + (256+12)*(((teas.Length-1) / cajuNaSirku)+1));
-           // this.MaximumSize = new System.Drawing.Size(8+12 + cajuNaSirku, 12 + teas.Length / cajuNaSirku);
-           // this.MinimumSize = new System.Drawing.Size(8+12 + cajuNaSirku, 12 + teas.Length / cajuNaSirku);
+            this.Width = 9000;
+            this.Height = 3000;
+            this.ClientSize = new System.Drawing.Size(12 + (256 + 12) * cajuNaSirku, 12 + (256 + 12) * (((teas.Length - 1) / cajuNaSirku) + 1));
+            // this.MaximumSize = new System.Drawing.Size(8+12 + cajuNaSirku, 12 + teas.Length / cajuNaSirku);
+            // this.MinimumSize = new System.Drawing.Size(8+12 + cajuNaSirku, 12 + teas.Length / cajuNaSirku);
             this.contextMenu = new System.Windows.Forms.ContextMenu();
             this.menuItemExit = new System.Windows.Forms.MenuItem();
             System.Windows.Forms.MenuItem[] polozkyMenu = new System.Windows.Forms.MenuItem[2*teas.Length+1];
@@ -56,7 +59,7 @@ namespace Čajovač
                 polozkyMenu[2*i+1]=teas[i].menuItemWater;
                 teas[i].menuItem.Index = 2 * i;
                 teas[i].menuItemWater.Index = 2 * i + 1;                
-            };
+            }
             polozkyMenu[polozkyMenu.Length - 1] = menuItemExit;
             this.contextMenu.MenuItems.AddRange(polozkyMenu);
             this.menuItemExit.Index = polozkyMenu.Length - 1;
@@ -114,6 +117,7 @@ namespace Čajovač
                 return;
             }
             cajuNaSirku = teaData.cajuNaSirku;
+            this.ClientSize = new System.Drawing.Size(12 + (256 + 12) * cajuNaSirku, 589);
             teas = new Tea[teaData.numberOfEnabled];
             int j = 0;
             for(int i = 0;i<teaData.data.Count;i++)
@@ -134,10 +138,14 @@ namespace Čajovač
             int id = 0;
             Button button = sender as Button;
             PictureBox tsi = sender as PictureBox;
+            MenuItem mi = sender as MenuItem;
             if (button != null)
                 id = (int)(button.Tag);
             if (tsi != null)
                 id = (int)(tsi.Tag);
+            if (mi != null)
+                id = (int)(mi.Tag);
+
             Tea tea = teas[id];
             if(tea.timingWater)
             {
@@ -168,10 +176,14 @@ namespace Čajovač
             int id = 0;
             Button button = sender as Button;
             PictureBox tsi = sender as PictureBox;
+            MenuItem mi = sender as MenuItem;
             if (button != null)
                 id = (int)(button.Tag);
             if (tsi != null)
                 id = (int)(tsi.Tag);
+            if (mi != null)
+                id = (int)(mi.Tag);
+
             Tea tea = teas[id];
             if (!tea.timingWater)
             {
@@ -330,6 +342,41 @@ namespace Čajovač
         private void quitMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        int widthForChange;
+        int heightForChange;
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            if (teas != null)
+            {
+                if(widthForChange == 0)
+                {
+                    widthForChange = this.ClientSize.Width;
+                }
+                if(heightForChange == 0)
+                {
+                    heightForChange = this.ClientSize.Height;
+                }
+                if (Math.Abs(this.ClientSize.Width - widthForChange) > 100)
+                {
+                    widthForChange = this.ClientSize.Width;
+                    heightForChange = this.ClientSize.Height;
+                    foreach (Tea t in teas)
+                    {
+                        t.reposition();
+                    }
+                }
+            }
+
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            foreach (Tea t in teas)
+            {
+                t.reposition();
+            }
         }
     }
 }
