@@ -66,7 +66,8 @@ namespace Čajovač
             this.menuItemExit.Text = "E&xit";
             this.menuItemExit.Click += new System.EventHandler(quitMenuItem_Click);
             notifyIcon.ContextMenu = this.contextMenu;
-            gongSound = new SoundPlayer(Properties.Resources.gong);           
+            gongSound = new SoundPlayer(Properties.Resources.gong);
+            this.SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.SupportsTransparentBackColor, true);
         }
 
         void loadTeas()
@@ -325,9 +326,21 @@ namespace Čajovač
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+            /*if (teas != null)
+            {
+                SuspendLayout();
+                foreach (Tea t in teas)
+                {
+                    if (t != null)
+                    {
+                        t.reposition();
+                    }
+                }
+                ResumeLayout();
+            }*/
         }
         private void Form1_Resize(object sender, EventArgs e)
-        {
+        {            
             if (WindowState == FormWindowState.Minimized)
             {
                 notifyIcon.Visible = true;
@@ -335,48 +348,42 @@ namespace Čajovač
             }
             else
             {
-                notifyIcon.Visible = false;
-                this.ShowInTaskbar = true;
+                    notifyIcon.Visible = false;
+                    this.ShowInTaskbar = true;
             }
         }
         private void quitMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
         }
-
-        int widthForChange;
-        int heightForChange;
+        
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             if (teas != null)
             {
-                if(widthForChange == 0)
+                SuspendLayout();
+                
+                foreach (Tea t in teas)
                 {
-                    widthForChange = this.ClientSize.Width;
-                }
-                if(heightForChange == 0)
-                {
-                    heightForChange = this.ClientSize.Height;
-                }
-                if (Math.Abs(this.ClientSize.Width - widthForChange) > 100)
-                {
-                    widthForChange = this.ClientSize.Width;
-                    heightForChange = this.ClientSize.Height;
-                    foreach (Tea t in teas)
+                    if (t != null)
                     {
-                        t.reposition();
+                        t.reposition(false);
                     }
                 }
+                ResumeLayout(true);
             }
 
         }
 
         private void Form1_ResizeEnd(object sender, EventArgs e)
         {
+            SuspendLayout();
             foreach (Tea t in teas)
             {
-                t.reposition();
+                t.reposition(true);
             }
+            ResumeLayout(true);
+            
         }
     }
 }

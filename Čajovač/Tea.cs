@@ -51,7 +51,85 @@ namespace Čajovač
         public System.Windows.Forms.MenuItem menuItem;
         public System.Windows.Forms.MenuItem menuItemWater;
         public System.Windows.Forms.Timer timer;
-        public void reposition()
+
+        public void reposition(bool zarovnatVysku)
+        {
+            int caju = dad.teas.Length;
+            int sirkaCaje = 256;
+            int w = dad.ClientSize.Width;
+            if (w == 0)
+                return;
+            int h = dad.ClientSize.Height;
+            int maxCajuNaSirku = (w - 12) / (256 + 12);
+            int maxCajuNaVysku = (h - 12) / (256 + 12);
+
+            int cajuNaSirku;
+            if (maxCajuNaSirku <= 1)
+            {
+                cajuNaSirku = 1;
+            }
+            else
+            {
+                int maxZbytek = 0;
+                int maxZbytekPocet = maxCajuNaSirku;
+                for (int i = maxCajuNaSirku; i > 1; i--)
+                {
+                    int z = caju % i;
+                    if (z == 0 && caju / i <= maxCajuNaVysku)
+                    {
+                        maxZbytekPocet = i;
+                        break;
+                    }
+                    if (z > maxZbytek && caju / i <= maxCajuNaVysku)
+                    {
+                        maxZbytek = z;
+                        maxZbytekPocet = i;
+                    }
+                }
+                cajuNaSirku = maxZbytekPocet;
+            }
+            int cajuNaVysku = (caju + cajuNaSirku - 1) / cajuNaSirku;
+            h = Math.Max(h, cajuNaVysku * (256 + 12) + 12);
+            if (zarovnatVysku)
+            {
+                if(h>1008)
+                {
+                    dad.ClientSize = new System.Drawing.Size(w+50, cajuNaVysku * (256 + 12) + 12);
+                    return;
+                }
+                if (h != dad.ClientSize.Height)
+                {
+                    dad.ClientSize = new System.Drawing.Size(w, h);
+                }                
+            }
+            int wPadding = (w - cajuNaSirku * sirkaCaje) / (cajuNaSirku + 1);
+            int hPadding = (h - cajuNaVysku * sirkaCaje) / (cajuNaVysku + 1);
+            int wLastPadding;
+            if (caju % cajuNaSirku == 0)
+            {
+                wLastPadding = wPadding;
+            }
+            else
+            {
+                wLastPadding = (w - (caju % cajuNaSirku) * sirkaCaje) / ((caju % cajuNaSirku) + 1);
+            }
+
+            if (id / cajuNaSirku == cajuNaVysku - 1)
+            {
+                groupBox.Location = new System.Drawing.Point(wLastPadding + (sirkaCaje + wLastPadding) * (id % cajuNaSirku), hPadding + (sirkaCaje + hPadding) * (id / cajuNaSirku));
+            }
+            else
+            {
+                groupBox.Location = new System.Drawing.Point(wPadding + (sirkaCaje + wPadding) * (id % cajuNaSirku), hPadding + (sirkaCaje + hPadding) * (id / cajuNaSirku));
+            }
+
+
+
+
+            //dad.Scale(new SizeF(0.5f, 0.5f));
+            //groupBox.Scale(new SizeF(0.5f, 0.5f));
+        }
+        public void roughReposition()
         {
             int caju = dad.teas.Length;
             int sirkaCaje = 256;
@@ -77,7 +155,7 @@ namespace Čajovač
                         maxZbytekPocet = i;
                         break;
                     }
-                    if (z > maxZbytek && caju/i <= maxCajuNaVysku)
+                    if (z > maxZbytek && caju / i <= maxCajuNaVysku)
                     {
                         maxZbytek = z;
                         maxZbytekPocet = i;
@@ -86,8 +164,8 @@ namespace Čajovač
                 cajuNaSirku = maxZbytekPocet;
             }
             int cajuNaVysku = (caju + cajuNaSirku - 1) / cajuNaSirku;
-            dad.ClientSize = new System.Drawing.Size(w,Math.Max(h,cajuNaVysku*(256+12)+12));
-            h = dad.ClientSize.Height;
+            h = Math.Max(h, cajuNaVysku * (256 + 12) + 12);
+            dad.Height = h;
             int wPadding = (w - cajuNaSirku * sirkaCaje) / (cajuNaSirku + 1);
             int hPadding = (h - cajuNaVysku * sirkaCaje) / (cajuNaVysku + 1);
             int wLastPadding;
@@ -103,17 +181,36 @@ namespace Čajovač
             if (id / cajuNaSirku == cajuNaVysku - 1)
             {
                 groupBox.Location = new System.Drawing.Point(wLastPadding + (sirkaCaje + wLastPadding) * (id % cajuNaSirku), hPadding + (sirkaCaje + hPadding) * (id / cajuNaSirku));
+                //groupBox.Left = wLastPadding + (sirkaCaje + wLastPadding) * (id % cajuNaSirku);
+                //groupBox.Top = hPadding + (sirkaCaje + hPadding) * (id / cajuNaSirku);
             }
             else
             {
                 groupBox.Location = new System.Drawing.Point(wPadding + (sirkaCaje + wPadding) * (id % cajuNaSirku), hPadding + (sirkaCaje + hPadding) * (id / cajuNaSirku));
+                //groupBox.Left = wPadding + (sirkaCaje + wPadding) * (id % cajuNaSirku);
+                //groupBox.Top = hPadding + (sirkaCaje + hPadding) * (id / cajuNaSirku);
             }
 
 
-            
+
 
             //dad.Scale(new SizeF(0.5f, 0.5f));
             //groupBox.Scale(new SizeF(0.5f, 0.5f));
+        }
+        public void hide()
+        {
+            /*button.Visible = false;
+            pictureBoxFuck.Visible = false;*/
+            button.Dispose();
+            pictureBoxFuck.Dispose();
+            labelM.Dispose();
+            labelMin.Dispose();
+            labelSec.Dispose();
+        }
+        public void show()
+        {
+            /*button.Visible = true;
+            pictureBoxFuck.Visible = true;*/
         }
         public Tea(Form1 dad,TeaDataItem teaData, int id)
         {            
@@ -300,7 +397,7 @@ namespace Čajovač
             this.groupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFuck)).EndInit();
 
-            reposition();
+            reposition(true);
         }       
     }
     public class TeaDataItem
